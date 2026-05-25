@@ -1,0 +1,109 @@
+# Portable pack manifest для data-protection
+# Российский pack для compliance с 152-ФЗ "О персональных данных"
+
+id: data-protection
+version: 0.1.0
+name: "Защита персональных данных (152-ФЗ)"
+description: >
+  Compliance с российским 152-ФЗ "О персональных данных": ответы на запросы субъектов
+  ПДн (DSAR — права по ст.14), review ДОУ (договоров об обработке данных), ОВПД
+  (оценки вреда), мониторинг политики обработки ПДн, gap-анализ при изменениях НПА,
+  cross-border ПДн уведомления РКН. Учитывает посткризисную practice (с 30.05.2025
+  усиленные штрафы РКН до 18 млн руб).
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - data-protection
+  - 152-fz
+  - personal-data
+  - dsar
+  - персональные-данные
+  - роскомнадзор
+
+category: legal
+
+# MCP серверы.
+mcp:
+  required: []
+  optional:
+    - pravo      # для актуальных редакций 152-ФЗ + писем РКН
+    - egrul      # для проверки контрагентов при ДОУ
+
+# Skills внутри pack'а — все портированы из privacy-legal Anthropic с РФ adaptation.
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    inspired_by: privacy-legal/cold-start-interview
+
+  - id: dsar-response
+    path: skills/dsar-response/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: privacy-legal/dsar-response
+    note: "Killer skill для 152-ФЗ — РКН штрафует за просрочку. Полный РФ workflow: identify, locate, exemptions, draft ответ."
+
+  - id: dpa-review
+    path: skills/dpa-review/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: privacy-legal/dpa-review
+    note: "ДОУ review по ст.6 ч.3 152-ФЗ. 5 обязательных элементов + sectoral overlays + локализация + cross-border."
+
+  - id: use-case-triage
+    path: skills/use-case-triage/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: privacy-legal/use-case-triage
+    note: "Triage: PROCEED / OVPD REQUIRED / OVPD + RKN / STOP. Sectoral overlays РФ."
+
+  - id: pia-generation
+    path: skills/pia-generation/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: privacy-legal/pia-generation
+    note: "ОВПД (оценка вреда ПДн) по ст.18.1 152-ФЗ. Уровни защиты УЗ-1/2/3/4 по ПП РФ 1119."
+
+  - id: policy-monitor
+    path: skills/policy-monitor/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: privacy-legal/policy-monitor
+    note: "Drift detection политики vs practice. Sweep / direct query modes."
+
+  - id: reg-gap-analysis
+    path: skills/reg-gap-analysis/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: privacy-legal/reg-gap-analysis
+    note: "Gap analysis при изменениях 152-ФЗ. Critical для РФ — частые изменения регулирования."
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: privacy-legal/customize
+
+# Managed agents (headless).
+agents:
+  # rkn-changes-watcher — мониторинг изменений 152-ФЗ + писем РКН
+
+# Practice profile.
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/data-protection/PROFILE.md"

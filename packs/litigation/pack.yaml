@@ -1,0 +1,177 @@
+# Portable pack manifest для litigation
+# Российский pack для судебной работы (АПК / ГПК / КАС)
+
+id: litigation
+version: 0.1.0
+name: "Судебная работа (АПК / ГПК / КАС / УПК)"
+description: >
+  Управление портфелем судебных дел: matter intake/update/close, draft исковых,
+  досудебные претензии (ст.452 ГК), claim charts (доказательства по элементам
+  состава), chronology событий, обеспечение доказательств (АПК ст.72), запросы
+  суда (АПК ст.66, ст.74), privilege management (адвокатская тайна ФЗ-63).
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - litigation
+  - арбитраж
+  - суды
+  - apk
+  - gpk
+  - kas
+  - upk
+  - досудебная-претензия
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - pravo      # для НПА (АПК, ГПК, ПП ВС)
+    - kad        # картотека арбитражных дел
+    - egrul      # для проверки контрагентов в спорах
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    inspired_by: litigation-legal/cold-start-interview
+
+  - id: matter-intake
+    path: skills/matter-intake/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/matter-intake
+    note: "Universal intake workflow — 10 шагов: identification, conflicts, source, triage, materiality, OC, owners, legal hold, key dates, posture"
+
+  - id: matter-update
+    path: skills/matter-update/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/matter-update
+
+  - id: matter-close
+    path: skills/matter-close/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/matter-close
+
+  - id: matter-briefing
+    path: skills/matter-briefing/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/matter-briefing
+
+  - id: portfolio-status
+    path: skills/portfolio-status/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/portfolio-status
+
+  - id: chronology
+    path: skills/chronology/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/chronology
+
+  - id: oc-status
+    path: skills/oc-status/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/oc-status
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: litigation-legal/customize
+
+  - id: brief-section-drafter
+    path: skills/brief-section-drafter/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/brief-section-drafter
+    note: "АПК / ГПК структура секций (не FRCP); ПП ВС РФ цитирование"
+
+  - id: pretensia-intake
+    path: skills/pretensia-intake/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/demand-intake
+    note: "Pre-draft intake для досудебной претензии (ст.452 ГК)"
+
+  - id: pretensia-draft
+    path: skills/pretensia-draft/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/demand-draft
+    note: "Draft досудебной претензии — обязательный этап для арбитражного спора (АПК ст.4)"
+
+  - id: pretensia-received
+    path: skills/pretensia-received/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/demand-received
+    note: "Triage входящей претензии — 30 дней на ответ по ст.452 ГК"
+
+  - id: claim-chart
+    path: skills/claim-chart/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/claim-chart
+    note: "Civil mode only — patent mode skip"
+
+  - id: legal-hold
+    path: skills/legal-hold/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/legal-hold
+    note: "АПК ст.72 обеспечение доказательств (не US ESI preservation)"
+
+  - id: subpoena-triage
+    path: skills/subpoena-triage/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: litigation-legal/subpoena-triage
+    note: "Запрос суда / следователя — АПК ст.66, ст.74 / УПК"
+
+  - id: privilege-log-review
+    path: skills/privilege-log-review/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: litigation-legal/privilege-log-review
+    note: "Адвокатская тайна (ФЗ-63) — другая доктрина чем ACP. In-house без privilege."
+
+agents:
+  # docket-watcher (Phase 2) — мониторинг КАД на дедлайны
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/litigation/PROFILE.md"
+
+# Skipped из Anthropic (с rationale):
+# - deposition-prep — US FRCP 30(b)(6) не существует в РФ; РФ допрос свидетеля — другая процедура
+# - matter-workspace — Phase 2 infrastructure

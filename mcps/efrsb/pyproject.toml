@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "efrsb-mcp"
+version = "0.1.0"
+description = "MCP server для bankrot.fedresurs.ru — Единый федеральный реестр сведений о банкротстве. Проверка контрагента на банкротство, статус, арбитражный управляющий."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+authors = [{ name = "Claude for Russian Law contributors" }]
+keywords = ["mcp", "claude", "legal", "russian-law", "efrsb", "bankruptcy", "fedresurs"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Legal Industry",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "fastmcp>=3.2,<4",
+    "httpx>=0.27",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+efrsb-mcp = "efrsb_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/efrsb_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "A", "C4", "RET", "SIM"]
+ignore = ["E501"]

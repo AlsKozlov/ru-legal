@@ -1,0 +1,138 @@
+id: ip-law
+version: 0.1.0
+name: "Интеллектуальная собственность РФ"
+description: >
+  Часть 4 ГК РФ — товарные знаки, патенты (изобретения / полезные модели /
+  промобразцы), авторское право, программы для ЭВМ + БД, ноу-хау. Роспатент /
+  ФИПС регистрационные процедуры; СИП (Суд по интеллектуальным правам) практика;
+  ст.1252 ГК пресечение нарушений + компенсация (от 10k до 5М или 2× стоимость);
+  takedown ФЗ-149 ст.15.7 / антипиратский закон; OSS лицензии. Plus 2 RU-unique
+  — rospatent-application + domain-dispute (через Координационный центр / АДРД).
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - ip-law
+  - intellectual-property
+  - trademark
+  - patent
+  - copyright
+  - rospatent
+  - sip
+  - часть-4-гк
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - pravo
+    - kad        # для практики СИП
+    - rospatent  # реестр ТЗ / патентов (P1 roadmap)
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ip-legal/cold-start-interview
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ip-legal/customize
+
+  - id: clearance
+    path: skills/clearance/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ip-legal/clearance
+    note: "Trademark / patent clearance — поиск через Роспатент реестры"
+
+  - id: fto-triage
+    path: skills/fto-triage/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: ip-legal/fto-triage
+    note: "Freedom to Operate — поиск патентов в Роспатент / ФИПС + EPO / WIPO"
+
+  - id: infringement-triage
+    path: skills/infringement-triage/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ip-legal/infringement-triage
+    note: "ст.1252 ГК пресечение + компенсация (10k-5М или 2× стоимость)"
+
+  - id: cease-desist
+    path: skills/cease-desist/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ip-legal/cease-desist
+    note: "Претензия по IP. Обязательная досудебка ст.1252 ГК + АПК ст.4 ч.5 для CIP"
+
+  - id: ip-clause-review
+    path: skills/ip-clause-review/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ip-legal/ip-clause-review
+
+  - id: invention-intake
+    path: skills/invention-intake/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ip-legal/invention-intake
+    note: "Intake изобретения / ПО — ст.1295 служебное произведение critical"
+
+  - id: oss-review
+    path: skills/oss-review/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ip-legal/oss-review
+
+  - id: portfolio
+    path: skills/portfolio/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ip-legal/portfolio
+
+  - id: takedown
+    path: skills/takedown/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: ip-legal/takedown
+    note: "ФЗ-149 ст.15.7 + антипиратский закон (Мосгорсуд) vs US DMCA"
+
+  - id: rospatent-application
+    path: skills/rospatent-application/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — подача заявки на ТЗ / изобретение / ПО / БД в Роспатент / ФИПС"
+
+  - id: domain-dispute
+    path: skills/domain-dispute/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — споры по доменам .RU/.РФ через АДР KЦ + СИП"
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/ip-law/PROFILE.md"

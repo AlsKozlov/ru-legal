@@ -1,0 +1,95 @@
+id: compliance-aml
+version: 0.1.0
+name: "AML / 115-ФЗ ПОД-ФТ Compliance"
+description: >
+  Compliance с 115-ФЗ «О противодействии легализации доходов, полученных
+  преступным путём, и финансированию терроризма» (ПОД-ФТ). KYC процедуры,
+  identification beneficial owners, sanctions screening (US OFAC + EU + UK +
+  ООН + РФ контр-санкции), мониторинг подозрительных операций, SAR — отчёты
+  в Росфинмониторинг (ФСФР), пилотный 173-ФЗ для валютного контроля. РФ
+  post-2022 — особое требование к sanctions compliance.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - aml
+  - 115-fz
+  - kyc
+  - sanctions
+  - rosfinmonitoring
+  - росфинмониторинг
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - pravo
+    - egrul
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: policy-115fz
+    path: skills/policy-115fz/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Правила внутреннего контроля (ПВК) по 115-ФЗ — основной документ"
+
+  - id: beneficial-owner-check
+    path: skills/beneficial-owner-check/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: kyc-procedure
+    path: skills/kyc-procedure/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: transaction-monitoring
+    path: skills/transaction-monitoring/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: sanctions-screening
+    path: skills/sanctions-screening/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Killer area post-2022 — multi-jurisdictional check"
+
+  - id: pep-screening
+    path: skills/pep-screening/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: sar-submission
+    path: skills/sar-submission/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Подача СПО в Росфинмониторинг"
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/compliance-aml/PROFILE.md"

@@ -1,0 +1,112 @@
+id: ai-governance
+version: 0.1.0
+name: "AI Governance РФ"
+description: >
+  AI governance в условиях РФ regulatory landscape. Триаж AI use cases по
+  риску (analogous к EU AI Act categorization, но РФ-specific applicable
+  regulations); review AI vendor contracts (especially LLM API providers,
+  ML libraries с OSS overlays); AIA (AI Impact Assessment); inventory всех
+  AI systems в организации; AI policy framework. РФ specifics: 152-ФЗ
+  applicability для AI processing ПДн; пилотные regulatory sandboxes (ФЗ-258);
+  ПП РФ 1186 (национальная стратегия AI); санкционные restrictions на foreign
+  AI services post-2022.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - ai-governance
+  - ai-ethics
+  - llm
+  - ai-act-equivalent
+  - 152-fz-ai
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - pravo
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ai-governance-legal/cold-start-interview
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ai-governance-legal/customize
+
+  - id: use-case-triage
+    path: skills/use-case-triage/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ai-governance-legal/use-case-triage
+    note: "PROCEED / IMPACT ASSESS / RESTRICT / PROHIBIT — РФ-specific applicable regulations"
+
+  - id: vendor-ai-review
+    path: skills/vendor-ai-review/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ai-governance-legal/vendor-ai-review
+    note: "Review AI vendor contracts. Post-2022 sanctions restrictions matter — many US/EU AI services not directly available"
+
+  - id: aia-generation
+    path: skills/aia-generation/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ai-governance-legal/aia-generation
+    note: "AI Impact Assessment — combines ОВПД framework (152-ФЗ ст.18.1) с AI-specific risks"
+
+  - id: ai-inventory
+    path: skills/ai-inventory/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: ai-governance-legal/ai-inventory
+
+  - id: policy-starter
+    path: skills/policy-starter/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: ai-governance-legal/policy-starter
+    note: "Draft AI policy для РФ организации"
+
+  - id: deployment-review
+    path: skills/deployment-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — pre-deployment review AI system перед production"
+
+  - id: training-data-review
+    path: skills/training-data-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — review training data на compliance (152-ФЗ ПДн, авторские, sensitive)"
+
+  - id: user-disclosure-check
+    path: skills/user-disclosure-check/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — проверка обязательных disclosures пользователям об AI usage"
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/ai-governance/PROFILE.md"

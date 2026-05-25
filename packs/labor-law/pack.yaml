@@ -1,0 +1,169 @@
+id: labor-law
+version: 0.1.0
+name: "Трудовое право РФ (ТК)"
+description: >
+  Compliance с Трудовым кодексом РФ: увольнение по ст.77-84 (at-will НЕ работает!),
+  ЛНПА drafting, classification ТД/ГПД/самозанятый, отпуска (ФСС), внутренние
+  расследования. Killer area — споры в РФ обычно проигрывают работодатели из-за
+  процедурных нарушений.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - labor-law
+  - employment
+  - tk-rf
+  - трудовой-кодекс
+  - hr
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - pravo      # для ТК + писем Минтруда / Роструда
+    - egrul
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    inspired_by: employment-legal/cold-start-interview
+
+  - id: termination-review
+    path: skills/termination-review/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: employment-legal/termination-review
+    note: "Killer skill — at-will doesn't exist в РФ. Анализ оснований ст.77-84 ТК + соблюдение процедуры. Споры обычно проигрывают работодатели."
+
+  - id: hiring-review
+    path: skills/hiring-review/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: employment-legal/hiring-review
+    note: "Трудовой договор review — ТК ст.57 обязательные условия"
+
+  - id: worker-classification
+    path: skills/worker-classification/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: employment-legal/worker-classification
+    note: "ТД vs ГПД vs Самозанятый (НПД) — РФ-specific tripartite distinction"
+
+  - id: wage-hour-qa
+    path: skills/wage-hour-qa/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: employment-legal/wage-hour-qa
+    note: "ТК нормы времени, сверхурочные ст.99, районные коэффициенты"
+
+  - id: policy-drafting
+    path: skills/policy-drafting/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: employment-legal/policy-drafting
+    note: "ЛНПА (правила трудового распорядка, положение об оплате, штатное)"
+
+  - id: handbook-updates
+    path: skills/handbook-updates/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: employment-legal/handbook-updates
+
+  - id: leave-tracker
+    path: skills/leave-tracker/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: employment-legal/leave-tracker
+    note: "ФСС / ТК отпуска (ст.115 ежегодные, ст.255-257 декрет)"
+
+  - id: log-leave
+    path: skills/log-leave/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: employment-legal/log-leave
+
+  - id: internal-investigation
+    path: skills/internal-investigation/SKILL.md
+    user_invocable: false
+    portability: B
+    from_anthropic: true
+    ported_from: employment-legal/internal-investigation
+    note: "Backend framework для investigation suite"
+
+  - id: investigation-open
+    path: skills/investigation-open/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: employment-legal/investigation-open
+
+  - id: investigation-add
+    path: skills/investigation-add/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: employment-legal/investigation-add
+
+  - id: investigation-query
+    path: skills/investigation-query/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: employment-legal/investigation-query
+
+  - id: investigation-memo
+    path: skills/investigation-memo/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: employment-legal/investigation-memo
+
+  - id: investigation-summary
+    path: skills/investigation-summary/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: employment-legal/investigation-summary
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: employment-legal/customize
+
+  # RU-unique addition
+  - id: trudovaya-inspeksiya-response
+    path: skills/trudovaya-inspeksiya-response/SKILL.md
+    user_invocable: true
+    portability: D  # written from scratch, no Anthropic equivalent
+    from_anthropic: false
+    note: "RU-unique — ответ на проверку Государственной инспекции труда / Роструда"
+
+agents:
+  # tk-changes-monitor (Phase 2)
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/labor-law/PROFILE.md"
+
+# Deferred / skipped (с rationale):
+# - matter-workspace — Phase 2
+# - international-expansion (+ expansion-kickoff, expansion-update) — separate СНГ expansion topic, P2

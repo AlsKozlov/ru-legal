@@ -1,0 +1,102 @@
+# Portable pack manifest для public-procurement
+# Государственные / корпоративные закупки — RU-уникальный pack
+
+id: public-procurement
+version: 0.1.0
+name: "Госзакупки РФ (ФЗ-44/223)"
+description: >
+  ФЗ-44 (контрактная система гос.закупок) + ФЗ-223 (корпоративные закупки с
+  гос.участием). Killer area для бизнеса с гос.заказчиками: tender review,
+  определение eligibility, drafting технического + ценового предложения,
+  определение "заточенных" тендеров под конкретного поставщика, жалоба в ФАС,
+  проверка через Реестр недобросовестных поставщиков (РНП). 2025: > 30 трлн руб
+  годовой объём гос.закупок.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - procurement
+  - fz-44
+  - fz-223
+  - гос-закупки
+  - тендеры
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - zakupki  # ЕИС закупки zakupki.gov.ru (P1 roadmap)
+    - egrul    # для проверки заказчика / других участников
+    - kad      # для судебной практики по тендерам
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: tender-documentation-review
+    path: skills/tender-documentation-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Killer skill — анализ тендерной документации"
+
+  - id: tender-eligibility-check
+    path: skills/tender-eligibility-check/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: proposal-draft-tech
+    path: skills/proposal-draft-tech/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: proposal-draft-price
+    path: skills/proposal-draft-price/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+  - id: biased-tender-detection
+    path: skills/biased-tender-detection/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Detection 'заточенных' тендеров под конкретного поставщика"
+
+  - id: fas-complaint-draft
+    path: skills/fas-complaint-draft/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Жалоба в ФАС на нарушения 44-ФЗ"
+
+  - id: rnp-check
+    path: skills/rnp-check/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Проверка контрагента в Реестре недобросовестных поставщиков"
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+agents:
+  # tender-watcher (Phase 2) — мониторинг новых тендеров по subscription
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/public-procurement/PROFILE.md"

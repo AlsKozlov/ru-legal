@@ -1,0 +1,84 @@
+id: real-estate
+version: 0.1.0
+name: "Недвижимость РФ"
+description: >
+  RU-unique pack по недвижимости РФ. Договор долевого участия (ДДУ — 214-ФЗ
+  killer area для покупателей жилья); commercial аренда (ст.606-625 ГК +
+  обязательная регистрация в ЕГРН для аренды > 1 года ст.609); residential
+  аренда (наём ст.671-688); cadastre check через Росреестр / ЕГРН; encumbrance
+  analysis (ипотека, сервитуты, аресты); купля-продажа (ст.549-558 ГК +
+  обязательная регистрация в ЕГРН); договоры строительного подряда (ст.740 ГК +
+  214-ФЗ для жилищного).
+license: Apache-2.0
+authors:
+  - name: "Claude for Russian Law contributors"
+keywords:
+  - legal
+  - russian-law
+  - real-estate
+  - 214-fz
+  - ddu
+  - аренда
+  - недвижимость
+  - кадастр
+  - егрн
+  - росреестр
+category: legal
+mcp:
+  required: []
+  optional:
+    - pravo
+    - egrul    # для проверки контрагентов
+    - rosreestr  # ЕГРН — roadmap P2
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: ddu-review
+    path: skills/ddu-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Killer skill — Договор долевого участия 214-ФЗ"
+  - id: lease-commercial
+    path: skills/lease-commercial/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: lease-residential
+    path: skills/lease-residential/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: cadastre-check
+    path: skills/cadastre-check/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: encumbrance-analysis
+    path: skills/encumbrance-analysis/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: purchase-sale-review
+    path: skills/purchase-sale-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: construction-contract-review
+    path: skills/construction-contract-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/real-estate/PROFILE.md"

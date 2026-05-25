@@ -1,0 +1,147 @@
+# Portable pack manifest для corporate-law
+# Корпоративное право РФ: ООО / АО / ПАО / некоммерческие
+
+id: corporate-law
+version: 0.1.0
+name: "Корпоративное право РФ"
+description: >
+  ООО / АО / ПАО / НКО — корпоративная структура, общие собрания (ст.181.2 ГК +
+  ФЗ-14 ООО + ФЗ-208 АО), Совет директоров, Due Diligence (ЕГРЮЛ + ФНС + kad.arbitr
+  + банкротство), сделки с долями / акциями (нотариус для ООО — ст.21 ФЗ-14),
+  M&A closing, post-deal integration, ежегодная корпоративная отчётность.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - corporate-law
+  - m-and-a
+  - ooo
+  - ao
+  - fz-14
+  - fz-208
+  - корпоративное-право
+
+category: legal
+
+mcp:
+  required:
+    - egrul   # для DD по ЕГРЮЛ
+  optional:
+    - pravo
+    - kad     # для DD по судам
+    - efrsb   # для DD по банкротству
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: corporate-legal/cold-start-interview
+
+  - id: tabular-review
+    path: skills/tabular-review/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: corporate-legal/tabular-review
+    note: "Multi-doc DD review — generates structured table"
+
+  - id: diligence-issue-extraction
+    path: skills/diligence-issue-extraction/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: corporate-legal/diligence-issue-extraction
+    note: "DD findings — ЕГРЮЛ, налоги, суды, банкротство, недвижимость, лицензии"
+
+  - id: entity-compliance
+    path: skills/entity-compliance/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: corporate-legal/entity-compliance
+    note: "РФ corporate housekeeping — ежегодные собрания, ЕГРЮЛ updates, ФНС, СФР отчётность"
+
+  - id: written-consent
+    path: skills/written-consent/SKILL.md
+    user_invocable: true
+    portability: C
+    from_anthropic: true
+    ported_from: corporate-legal/written-consent
+    note: "Заочное голосование по ст.181.2 ГК / ст.38 ФЗ-14 / ст.50 ФЗ-208 — fundamentally different от US Delaware written consent"
+
+  - id: board-minutes
+    path: skills/board-minutes/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: corporate-legal/board-minutes
+    note: "Протоколы ОСУ / ОСА / Совета директоров"
+
+  - id: closing-checklist
+    path: skills/closing-checklist/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: corporate-legal/closing-checklist
+    note: "M&A closing с РФ нотариус-обязательным процессом для ООО"
+
+  - id: material-contract-schedule
+    path: skills/material-contract-schedule/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: corporate-legal/material-contract-schedule
+
+  - id: deal-team-summary
+    path: skills/deal-team-summary/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: corporate-legal/deal-team-summary
+
+  - id: integration-management
+    path: skills/integration-management/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: corporate-legal/integration-management
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: corporate-legal/customize
+
+  # RU-unique additions
+  - id: share-deal-review
+    path: skills/share-deal-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — сделки с долями ООО (ст.21 ФЗ-14 — нотариус!) и акциями АО"
+
+  - id: corporate-meeting-prep
+    path: skills/corporate-meeting-prep/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — подготовка ОСУ / ОСА / СД (повестка, уведомления, кворум, голосование)"
+
+agents:
+  # entity-compliance-watcher (Phase 2) — мониторинг сроков ежегодной отчётности
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/corporate-law/PROFILE.md"
+
+# Deferred / skipped:
+# - matter-workspace — Phase 2
+# - ai-tool-handoff — meta, low standalone value

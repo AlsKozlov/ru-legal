@@ -1,0 +1,75 @@
+id: administrative-law
+version: 0.1.0
+name: "Административное право РФ (КоАП)"
+description: >
+  Реакция на админ.правонарушения по КоАП РФ. RU-unique pack — no Anthropic
+  equivalent. Ответ на протокол об admin.правонарушении (ст.28.2), участие в
+  рассмотрении дела (ст.29), обжалование постановления (10 дней ст.30.3),
+  подготовка к плановым / внеплановым проверкам (248-ФЗ), защита при проверке,
+  статуты ст.4.5 (сроки давности).
+license: Apache-2.0
+authors:
+  - name: "Claude for Russian Law contributors"
+keywords:
+  - legal
+  - russian-law
+  - administrative-law
+  - koap-rf
+  - проверка
+  - админштраф
+category: legal
+mcp:
+  required: []
+  optional:
+    - pravo
+    - kad
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: koap-violation-response
+    path: skills/koap-violation-response/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Killer skill — ответ на протокол об админ.правонарушении"
+  - id: inspection-preparation
+    path: skills/inspection-preparation/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+  - id: inspection-defense
+    path: skills/inspection-defense/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Действия compания при проведении проверки"
+  - id: administrative-appeal
+    path: skills/administrative-appeal/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Обжалование постановления (10 дней) и решения (10 дней дальше)"
+  - id: statute-of-limitations-check
+    path: skills/statute-of-limitations-check/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Проверка сроков давности по ст.4.5 КоАП — может отменить дело"
+  - id: fines-calculator
+    path: skills/fines-calculator/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/administrative-law/PROFILE.md"

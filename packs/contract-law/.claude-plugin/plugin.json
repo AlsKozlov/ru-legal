@@ -1,0 +1,10 @@
+{
+  "name": "contract-law",
+  "version": "0.1.0",
+  "description": "Договорное право РФ. Анализ коммерческих договоров, драфт NDA / услуг / поставки / аренды / лицензионных с цитированием ГК РФ и помечанием рисков по светофору 🔴🟡🟢. Проверяет совместимость с императивными нормами и судебной практикой через MCP-коннекторы к pravo.gov.ru, kad.arbitr.ru, ЕГРЮЛ.",
+  "author": {
+    "name": "ru-legal contributors"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["legal", "russian-law", "contract-law", "civil-code", "договорное-право"]
+}

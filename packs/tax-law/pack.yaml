@@ -1,0 +1,108 @@
+# Portable pack manifest для tax-law
+# Налоговое право РФ — RU-уникальный pack, no Anthropic equivalent
+
+id: tax-law
+version: 0.1.0
+name: "Налоговое право РФ (НК)"
+description: >
+  Налоговое compliance + споры с ФНС. Выбор системы налогообложения (ОСНО /
+  УСН / ЕСХН / АУСН / ПСН для ИП), НДС-анализ (включая возмещение), ответы
+  на акты камеральных и выездных проверок (ВНП), досудебное обжалование
+  (ст.138 НК — обязательная стадия!), transfer pricing (Раздел V.1 НК),
+  переписка с ФНС, налоговые споры в арбитражных судах. Killer skill —
+  tax-audit-response: ВНП доначисления — 1.5 trillion руб/год по всей РФ.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - tax-law
+  - nk-rf
+  - fns
+  - налоговое-право
+  - vat
+  - usn
+  - osno
+
+category: legal
+
+mcp:
+  required: []
+  optional:
+    - pravo
+    - kad     # для судебных дел по налогам
+    - egrul   # для проверки контрагентов в НДС-цепочках
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique cold-start для налогового профиля"
+
+  - id: tax-system-choice
+    path: skills/tax-system-choice/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — ОСНО / УСН / ЕСХН / АУСН / ПСН / НПД analysis"
+
+  - id: vat-analysis
+    path: skills/vat-analysis/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — НДС compliance + возмещение"
+
+  - id: tax-audit-response
+    path: skills/tax-audit-response/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Killer skill — ответ на акт камеральной/выездной налоговой проверки"
+
+  - id: pre-trial-appeal
+    path: skills/pre-trial-appeal/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — досудебное обжалование ст.138-140 НК (обязательная стадия)"
+
+  - id: transfer-pricing
+    path: skills/transfer-pricing/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — Раздел V.1 НК + уведомление о контролируемых сделках"
+
+  - id: fns-correspondence
+    path: skills/fns-correspondence/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "Ответы на требования / запросы ФНС"
+
+  - id: arbitration-tax-disputes
+    path: skills/arbitration-tax-disputes/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — налоговые споры в АС (after досудебный stage)"
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+
+agents:
+  # tax-deadline-watcher (Phase 2)
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/tax-law/PROFILE.md"

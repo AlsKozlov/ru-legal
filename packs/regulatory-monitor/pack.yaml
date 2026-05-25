@@ -1,0 +1,63 @@
+id: regulatory-monitor
+version: 0.1.0
+name: "Мониторинг изменений законодательства"
+description: >
+  Tracking + analysis изменений НПА РФ. ГД / Совет Федерации / Указы Президента /
+  Постановления Правительства — постоянно меняются. Этот pack автоматизирует:
+  feed-watching (что новое), diff (что именно поменялось), gap-surfacing (как
+  это влияет на нашу compliance), policy-redraft (адаптация наших ЛНПА).
+
+license: Apache-2.0
+authors:
+  - name: "Claude for Russian Law contributors"
+keywords:
+  - legal
+  - russian-law
+  - regulatory-monitoring
+  - npa-tracking
+  - compliance
+category: legal
+mcp:
+  required: [pravo]
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: regulatory-legal/cold-start-interview
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+  - id: reg-feed-watcher
+    path: skills/reg-feed-watcher/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: regulatory-legal/reg-feed-watcher
+    note: "Killer skill — daily/weekly watch новых НПА в наших sectors"
+  - id: policy-diff
+    path: skills/policy-diff/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: regulatory-legal/policy-diff
+  - id: gap-surfacer
+    path: skills/gap-surfacer/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: regulatory-legal/gap-surfacer
+  - id: policy-redraft
+    path: skills/policy-redraft/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: regulatory-legal/policy-redraft
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/regulatory-monitor/PROFILE.md"

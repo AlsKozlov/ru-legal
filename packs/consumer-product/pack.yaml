@@ -1,0 +1,57 @@
+id: consumer-product
+version: 0.1.0
+name: "Consumer / Product Law РФ"
+description: >
+  ЗЗПП (Закон о защите прав потребителей) + продуктовое право РФ. Pre-launch
+  review продукта / приложения / маркетплейса; review terms of service +
+  privacy policy; политика возврата (ст.18 ЗЗПП — права при некачественном
+  товаре, ст.25 — обмен по non-quality reasons); compliance с 38-ФЗ реклама.
+
+license: Apache-2.0
+authors:
+  - name: "Claude for Russian Law contributors"
+keywords:
+  - legal
+  - russian-law
+  - consumer-protection
+  - zzpp
+  - product-launch
+category: legal
+mcp:
+  optional: [pravo, rospatent]
+
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: product-legal/cold-start-interview
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+  - id: launch-review
+    path: skills/launch-review/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: product-legal/launch-review
+    note: "Killer skill — pre-launch product review"
+  - id: terms-review
+    path: skills/terms-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — review terms of service / EULA"
+  - id: return-policy-review
+    path: skills/return-policy-review/SKILL.md
+    user_invocable: true
+    portability: D
+    from_anthropic: false
+    note: "RU-unique — политика возврата по ЗЗПП ст.18 + ст.25"
+
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/consumer-product/PROFILE.md"

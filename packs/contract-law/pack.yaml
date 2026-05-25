@@ -1,0 +1,137 @@
+# Portable pack manifest — runtime-агностичный.
+# Claude Code marketplace.json и другие adapter-specific манифесты
+# генерируются из этого файла автоматически.
+
+id: contract-law
+version: 0.1.0
+name: "Договорное право РФ"
+description: >
+  Анализ коммерческих договоров, драфт NDA / услуг / поставки / аренды / лицензионных.
+  Цитирует ГК РФ, проверяет совместимость с императивными нормами, помечает риски
+  по светофору 🔴🟡🟢.
+
+license: Apache-2.0
+
+authors:
+  - name: "Claude for Russian Law contributors"
+
+keywords:
+  - legal
+  - russian-law
+  - contract-law
+  - civil-code
+  - договорное-право
+
+category: legal
+
+# MCP серверы, которые pack использует.
+# required — без них skills не работают; optional — degraded mode допустим.
+mcp:
+  required:
+    - pravo      # тексты НПА с pravo.gov.ru
+  optional:
+    - egrul      # проверка контрагентов
+    - kad        # судебная практика
+
+# Skills внутри pack'а. Путь — относительно папки пака.
+skills:
+  - id: cold-start-interview
+    path: skills/cold-start-interview/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: false
+
+  - id: contract-review
+    path: skills/contract-review/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: false
+    argument_hint: "<path-to-contract> [--side=buyer|seller|both]"
+
+  - id: nda-draft
+    path: skills/nda-draft/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: false
+    argument_hint: "[--side=disclosing|receiving|mutual] [--counterparty=NAME]"
+
+  - id: escalation-flagger
+    path: skills/escalation-flagger/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: commercial-legal/escalation-flagger
+
+  - id: stakeholder-summary
+    path: skills/stakeholder-summary/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: commercial-legal/stakeholder-summary
+
+  - id: amendment-history
+    path: skills/amendment-history/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: commercial-legal/amendment-history
+
+  - id: review
+    path: skills/review/SKILL.md
+    user_invocable: true
+    portability: B
+    from_anthropic: true
+    ported_from: commercial-legal/review
+    note: "Router skill — detects тип договора и delegate'ит sub-skill'ам"
+
+  - id: renewal-tracker
+    path: skills/renewal-tracker/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: commercial-legal/renewal-tracker
+
+  - id: customize
+    path: skills/customize/SKILL.md
+    user_invocable: true
+    portability: A
+    from_anthropic: true
+    ported_from: commercial-legal/customize
+
+  - id: nda-review
+    path: skills/nda-review/SKILL.md
+    user_invocable: false
+    portability: B
+    from_anthropic: true
+    ported_from: commercial-legal/nda-review
+    note: "Sub-skill, вызывается из /review router'а. С deep РФ adaptation (98-ФЗ режим КТ, ст.431.2 заверения)"
+    research_basis: vendor/research/nda-review-ru-practice.md
+
+  - id: vendor-agreement-review
+    path: skills/vendor-agreement-review/SKILL.md
+    user_invocable: false
+    portability: B
+    from_anthropic: true
+    ported_from: commercial-legal/vendor-agreement-review
+    note: "Sub-skill, флагман для buy-side review. С глубокой РФ адаптацией (ст.401 п.4 LoL, ст.431.2 + ст.406.1, ст.1295 IP, 152-ФЗ ДОУ, ст.110 АПК, налоговое агентирование)"
+    research_basis: vendor/research/vendor-agreement-review-ru-practice.md
+
+  - id: saas-msa-review
+    path: skills/saas-msa-review/SKILL.md
+    user_invocable: false
+    portability: B
+    from_anthropic: true
+    ported_from: commercial-legal/saas-msa-review
+    note: "Sub-skill, SaaS-specific overlay. РФ specifics: квалификация SaaS (ст.782 ГК risk), НДС агентирование, 152-ФЗ локализация, cross-border ПДн уведомление РКН, post-2022 sanctions landscape"
+    research_basis: vendor/research/saas-msa-review-ru-practice.md
+
+# Managed agents (headless, для cron / managed agents API).
+agents:
+  - id: contract-renewal-watcher
+    path: agents/contract-renewal-watcher.md
+    user_invocable: false
+
+# Practice profile — заполняется через cold-start-interview.
+profile:
+  template: PROFILE.md
+  user_config_path: "~/.ru-legal/profiles/contract-law/PROFILE.md"
