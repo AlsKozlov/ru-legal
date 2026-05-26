@@ -59,15 +59,32 @@ _CACHE_MAX_ENTRIES = 500
 
 
 def _get_http_client() -> httpx.AsyncClient:
+    """HTTP client с browser-like UA.
+
+    bankrot.fedresurs.ru блокирует custom UA (HTTP 403).
+    По умолчанию используем Chrome 120 fingerprint.
+    Override через env EFRSB_USER_AGENT.
+    """
+    import os
     global _http_client
     if _http_client is None:
+        default_ua = (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        )
+        ua = os.environ.get("EFRSB_USER_AGENT", default_ua)
         _http_client = httpx.AsyncClient(
             timeout=REQUEST_TIMEOUT_S,
             headers={
-                "User-Agent": "efrsb-mcp/0.1.0",
-                "Accept": "application/json",
-                "Accept-Language": "ru-RU,ru;q=0.9",
+                "User-Agent": ua,
+                "Accept": "application/json, text/plain, */*",
+                "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
+                "Accept-Encoding": "gzip, deflate, br",
                 "Referer": "https://bankrot.fedresurs.ru/",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
             },
             limits=httpx.Limits(max_connections=10, max_keepalive_connections=5),
             follow_redirects=True,

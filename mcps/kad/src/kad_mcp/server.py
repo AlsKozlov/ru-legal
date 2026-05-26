@@ -60,19 +60,41 @@ _CACHE_MAX_ENTRIES = 500
 
 
 def _get_http_client() -> httpx.AsyncClient:
+    """HTTP client с browser-like UA + cookie jar.
+
+    kad.arbitr.ru блокирует custom UA (HTTP 451 anti-bot).
+    По умолчанию используем Chrome 120 fingerprint.
+    Override через env KAD_USER_AGENT.
+
+    Note: kad имеет Qrator/Cloudflare защиту, even с правильным UA может
+    давать 451 при sustained load. Для production volumes рекомендуется
+    paid feed (casebook, СПАРК).
+    """
+    import os
     global _http_client
     if _http_client is None:
+        default_ua = (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        )
+        ua = os.environ.get("KAD_USER_AGENT", default_ua)
         _http_client = httpx.AsyncClient(
             timeout=REQUEST_TIMEOUT_S,
             headers={
-                "User-Agent": "kad-mcp/0.1.0",
-                "Accept": "application/json",
-                "Accept-Language": "ru-RU,ru;q=0.9",
+                "User-Agent": ua,
+                "Accept": "application/json, text/plain, */*",
+                "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
+                "Accept-Encoding": "gzip, deflate, br",
                 "Referer": "https://kad.arbitr.ru/",
                 "X-Requested-With": "XMLHttpRequest",
+                "Sec-Fetch-Dest": "empty",
+                "Sec-Fetch-Mode": "cors",
+                "Sec-Fetch-Site": "same-origin",
             },
             limits=httpx.Limits(max_connections=5, max_keepalive_connections=3),
             follow_redirects=True,
+            cookies=httpx.Cookies(),  # cookie jar для session
         )
     return _http_client
 
