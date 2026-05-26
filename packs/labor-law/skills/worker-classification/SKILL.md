@@ -11,6 +11,7 @@ user_invocable: true
 ported_from: employment-legal/worker-classification
 ported_at: 2026-05-18
 adaptation_category: C
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /worker-classification

@@ -11,6 +11,7 @@ user_invocable: true
 ported_from: privacy-legal/policy-monitor
 ported_at: 2026-05-18
 adaptation_category: A
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /policy-monitor (drift detection политики vs practice)

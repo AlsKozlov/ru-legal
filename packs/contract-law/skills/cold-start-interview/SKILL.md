@@ -10,6 +10,7 @@ argument-hint: "[--redo для re-run на сконфигурированном 
 user_invocable: true
 adaptation_category: B
 inspired_by: commercial-legal/cold-start-interview
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /cold-start-interview

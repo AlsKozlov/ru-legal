@@ -9,6 +9,7 @@ argument-hint: "[--redo] [--check-integrations] [--quick]"
 user_invocable: true
 adaptation_category: B
 inspired_by: litigation-legal/cold-start-interview
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /cold-start-interview (litigation)

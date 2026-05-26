@@ -8,6 +8,7 @@ description: >
   аренды, лицензионных. Запускай когда пользователь даёт путь к договору или просит
   "проверить договор / review контракта / проанализировать соглашение".
 argument-hint: "<path-to-contract> [--side=buyer|seller|both] [--contract-type=supply|service|nda|lease|license]"
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /contract-review

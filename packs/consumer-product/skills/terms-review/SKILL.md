@@ -9,6 +9,7 @@ argument-hint: "[path к draft Terms]"
 user_invocable: true
 ported_at: 2026-05-20
 adaptation_category: D
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /terms-review

@@ -9,6 +9,7 @@ user_invocable: true
 ported_from: litigation-legal/demand-received
 ported_at: 2026-05-18
 adaptation_category: B
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /pretensia-received (входящая претензия)

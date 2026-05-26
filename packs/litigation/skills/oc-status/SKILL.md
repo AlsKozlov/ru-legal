@@ -9,6 +9,7 @@ user_invocable: true
 ported_from: litigation-legal/oc-status
 ported_at: 2026-05-18
 adaptation_category: A
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /oc-status (status emails outside counsel)

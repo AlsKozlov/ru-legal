@@ -11,6 +11,7 @@ user_invocable: true
 ported_from: null  # Written from scratch — РФ-unique
 ported_at: 2026-05-19
 adaptation_category: D  # RU-unique skill
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /trudovaya-inspeksiya-response

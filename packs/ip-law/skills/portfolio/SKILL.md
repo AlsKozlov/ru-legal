@@ -10,6 +10,7 @@ user_invocable: true
 ported_from: ip-legal/portfolio
 ported_at: 2026-05-19
 adaptation_category: A
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /portfolio

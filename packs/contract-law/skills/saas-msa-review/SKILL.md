@@ -12,6 +12,7 @@ user_invocable: false
 ported_from: commercial-legal/saas-msa-review
 ported_at: 2026-05-17
 adaptation_category: B
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # SaaS / Subscription Agreement Review (РФ adaptation)

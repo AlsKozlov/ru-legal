@@ -10,6 +10,7 @@ user_invocable: true
 ported_from: regulatory-legal/policy-diff
 ported_at: 2026-05-20
 adaptation_category: B
+last_legislative_update: "2026-05"  # auto-added 2026-05-26
 ---
 
 # /policy-diff
