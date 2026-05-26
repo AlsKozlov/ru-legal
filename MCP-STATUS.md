@@ -22,14 +22,16 @@
 
 | MCP | Статус | Tools | Endpoint Health | Critical Issues |
 |---|---|---|---|---|
+| **`cbr`** ⭐ NEW | 🟢 **GREEN** | 5 | ✅ XML_daily + HTML key rate работают | None — first fully working MCP |
 | `pravo` | 🟡 YELLOW | 5 | HTTP-only (TLS broken upstream с 2026-05-21) | Hardcoded Basic auth, нужен env-override |
 | `egrul` | 🟡 YELLOW | 4 | ✅ работает с API ключом | Free tier 800 req total (не в день) |
-| `kad` | 🔴 RED | 4 | ❌ HTTP 451 anti-bot | Нужен paid feed или session-cookie + browser UA |
-| `efrsb` | 🔴 RED | 4 | ❌ HTTP 403 для bot UA | Нужен браузерный UA |
+| `kad` | 🟡 YELLOW ↑ | 4 | Browser UA добавлен 2026-05-26 — нужен ре-тест | Anti-bot может продолжать резать |
+| `efrsb` | 🟡 YELLOW ↑ | 4 | Browser UA добавлен 2026-05-26 — нужен ре-тест | Anti-bot may still block |
 | `rospatent` | ⚫ BLACK | 6 | ❌ HTTP 404 ВСЕ 4 endpoints | **Endpoints не существуют — спекулятивная реализация. Нужен полный rewrite на HTML scraping или paid API.** |
 | `rosreestr` | 🟡 YELLOW | 5 | DDoS-Guard timeout | `get_encumbrances` misleading (всегда redirect на платную EGRN) |
 | `zakupki` | 🟡 YELLOW | 5 | endpoint suspect (возможно не существует) | Нужна верификация `/epz/api/orders/search` |
 | `ru-legal-aggregator` | 🟡 YELLOW | 4 + 145 skills | local FS only | `RU_LEGAL_PACKS_ROOT` env var required (НЕ документирован) |
+| `sanctions` (planned) | ⚫ BLACKED | — | ❌ fedsfm/minjust не имеют публичных machine-readable endpoints | **JS-rendered tables, no XML/JSON dump. Нужен playwright или paid feed.** |
 
 ---
 
