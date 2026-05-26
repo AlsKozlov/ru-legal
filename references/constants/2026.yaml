@@ -1,0 +1,232 @@
+# Российское законодательство — константы на 2026 год
+#
+# Этот файл — single source of truth для всех hardcoded values в skills.
+# Skills НЕ должны хардкодить эти числа в тексте — должны ссылаться на этот файл
+# (либо через constants.get(...) tool из constants-mcp).
+#
+# Обновляется ежемесячно или при изменении законодательства.
+# Каждое значение сопровождается source + source_date для аудита.
+
+metadata:
+  year: 2026
+  last_updated: "2026-05-26"
+  maintainer: "@AlsKozlov"
+  next_review: "2026-06-26"
+
+# ============================================================================
+# ТРУДОВОЕ ПРАВО
+# ============================================================================
+labor:
+  min_wage:
+    value: 19242
+    unit: "RUB/month"
+    source: "ФЗ-589 от 27.11.2025"
+    source_date: "2025-11-27"
+    note: "МРОТ январь 2026. Применяется для расчёта зарплаты, больничных, страх.взносов"
+
+  max_unemployment_benefit:
+    value: 49123
+    unit: "RUB/month"
+    source: "Постановление Правительства РФ 'О размерах пособия по безработице'"
+    source_date: "2025-12-15"
+
+  ndfl_base_rate:
+    value: 13
+    unit: "percent"
+    source: "НК РФ ст.224 п.1"
+
+  ndfl_progressive_rate:
+    value: 15
+    unit: "percent"
+    threshold:
+      value: 5000000
+      unit: "RUB/year"
+    source: "НК РФ ст.224 п.1.1"
+
+  ndfl_non_resident:
+    value: 30
+    unit: "percent"
+    source: "НК РФ ст.224 п.3"
+
+# ============================================================================
+# СТРАХОВЫЕ ВЗНОСЫ
+# ============================================================================
+insurance_contributions:
+  ops_rate_base:  # пенсионное страхование
+    value: 22
+    unit: "percent"
+    threshold:
+      value: 2225000
+      unit: "RUB/year"
+    note: "до предела — 22%, свыше — 10%"
+    source: "НК РФ ст.425"
+
+  oms_rate:  # медицинское страхование
+    value: 5.1
+    unit: "percent"
+    source: "НК РФ ст.425"
+
+  oss_rate:  # социальное страхование
+    value: 2.9
+    unit: "percent"
+    threshold:
+      value: 1632000
+      unit: "RUB/year"
+    note: "до предела"
+    source: "НК РФ ст.425"
+
+  msp_reduced_total_rate:  # МСП — пониженные тарифы свыше МРОТ
+    value: 15
+    unit: "percent"
+    note: "Применяется для МСП на часть зарплаты свыше МРОТ"
+    source: "НК РФ ст.427"
+
+# ============================================================================
+# 152-ФЗ (защита персональных данных)
+# ============================================================================
+data_protection:
+  fine_individual_max:
+    value: 100000
+    unit: "RUB"
+    source: "ст.13.11 КоАП РФ"
+    source_date: "2025-05-30"
+
+  fine_legal_max:
+    value: 18000000
+    unit: "RUB"
+    source: "ст.13.11 КоАП РФ (обновление 30.05.2025)"
+    source_date: "2025-05-30"
+    note: "Максимальный штраф для юр.лиц повышен с 18 млн ₽ начиная с 30.05.2025"
+
+  fine_legal_repeat:
+    value: 500000000  # 0.5 млрд
+    unit: "RUB"
+    note: "За повторное нарушение"
+    source: "ст.13.11 КоАП РФ ч.4"
+
+  dsar_response_general:
+    value: 30
+    unit: "calendar_days"
+    source: "152-ФЗ ст.20 ч.4 (обновление ФЗ-266/2022)"
+
+  dsar_response_consent_withdrawal:
+    value: 10
+    unit: "business_days"
+    source: "152-ФЗ ст.20"
+
+  dsar_response_correction:
+    value: 7
+    unit: "business_days"
+    source: "152-ФЗ"
+
+  breach_notification_rkn:
+    value: 24
+    unit: "hours"
+    note: "Срок уведомления Роскомнадзора об инциденте"
+    source: "152-ФЗ ст.21"
+
+# ============================================================================
+# РОСПАТЕНТ — госпошлины
+# ============================================================================
+rospatent_fees:
+  invention_application:
+    value: 11500
+    unit: "RUB"
+    source: "ПП РФ 941"
+    source_date: "2024-03-15"
+    note: "Заявка на изобретение"
+
+  trademark_application:
+    value: 35000
+    unit: "RUB"
+    source: "ПП РФ 941"
+    source_date: "2024-03-15"
+    note: "Заявка на ТЗ в одном классе МКТУ"
+
+  trademark_additional_class:
+    value: 11500
+    unit: "RUB"
+    source: "ПП РФ 941"
+    note: "За каждый доп. класс МКТУ"
+
+  utility_model:
+    value: 4500
+    unit: "RUB"
+    source: "ПП РФ 941"
+
+# ============================================================================
+# КоАП — сроки давности
+# ============================================================================
+koap_limitations:
+  default:
+    value: 2
+    unit: "months"
+    source: "КоАП ст.4.5 ч.1"
+
+  taxation:
+    value: 1
+    unit: "year"
+    source: "КоАП ст.4.5 ч.1"
+
+  antimonopoly:
+    value: 1
+    unit: "year"
+    source: "КоАП ст.4.5"
+
+  corruption:
+    value: 6
+    unit: "years"
+    source: "КоАП ст.4.5"
+
+# ============================================================================
+# ГОСПОШЛИНЫ за судебные действия
+# ============================================================================
+court_fees:
+  gpk_property_claim:
+    formula: "tiered"
+    tiers:
+      - { up_to: 20000, percent: 4, min: 400 }
+      - { up_to: 100000, base: 800, percent_over: 3 }
+      - { up_to: 200000, base: 3200, percent_over: 2 }
+      - { up_to: 1000000, base: 5200, percent_over: 1 }
+      - { over: 1000000, base: 13200, percent_over: 0.5, max: 60000 }
+    source: "НК РФ ст.333.19 п.1.1"
+
+  gpk_non_property_claim:
+    individual: 300
+    legal: 6000
+    unit: "RUB"
+    source: "НК РФ ст.333.19 п.3"
+
+  apk_property_claim:
+    formula: "tiered"
+    note: "Аналогично ГПК но другие тиры — см. НК РФ ст.333.21"
+
+  apk_non_property_claim:
+    legal_minimum: 6000
+    unit: "RUB"
+    source: "НК РФ ст.333.21"
+
+# ============================================================================
+# ЦБ РФ ставки
+# ============================================================================
+cbr:
+  key_rate:
+    value: 16  # placeholder — обновляется через cbr-mcp в реальном времени
+    unit: "percent"
+    note: "При расчёте пеней использовать актуальную через cbr-mcp"
+
+  refinancing_rate:
+    note: "Равна key_rate с 2016 года"
+    source: "Указание ЦБ РФ от 11.12.2015 № 3894-У"
+
+# ============================================================================
+# Иное
+# ============================================================================
+misc:
+  inn_individual_length: 12
+  inn_legal_length: 10
+  ogrn_legal_length: 13
+  ogrnip_individual_length: 15
+  kpp_length: 9
+  bik_length: 9

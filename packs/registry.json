@@ -1,12 +1,16 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "last_updated": "2026-05-26",
   "description": "Single source of truth для всех packs и MCP в ru-legal. Любой runtime adapter генерирует свои манифесты из этого файла.",
+  "mcp_health_reference": "MCP-STATUS.md",
+  "note": "MCP health status — см. ../MCP-STATUS.md. Не все MCP работают в текущем виде (см. audit 2026-05-26).",
   "packs": [
     {
       "id": "contract-law",
       "path": "contract-law",
       "manifest": "contract-law/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 12
     },
     {
@@ -14,6 +18,7 @@
       "path": "data-protection",
       "manifest": "data-protection/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 8,
       "note": "152-ФЗ compliance — 8 skills (DSAR, ДОУ, ОВПД, политика, gap-анализ, triage, customize, cold-start)"
     },
@@ -22,6 +27,7 @@
       "path": "litigation",
       "manifest": "litigation/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 17,
       "note": "АПК/ГПК/КАС/УПК — 17 skills (matter lifecycle 8 + brief drafting + досудебка trio + claim-chart + legal-hold + subpoena + privilege)"
     },
@@ -30,6 +36,7 @@
       "path": "labor-law",
       "manifest": "labor-law/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 17,
       "note": "ТК — 17 skills (termination killer skill + hiring + classification ТД/ГПД/НПД + wage-hour + leave/ФСС + 5 investigation suite + policy drafting + handbook + cold-start + customize + trudovaya-inspeksiya-response RU-unique)"
     },
@@ -38,6 +45,7 @@
       "path": "corporate-law",
       "manifest": "corporate-law/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 13,
       "note": "ФЗ-14 ООО / ФЗ-208 АО / ПАО / ГК — 13 skills (DD + tabular + entity-compliance + written-consent ст.181.2 + board-minutes + closing + material-contract-schedule + deal-team-summary + integration-management + cold-start + customize + RU-unique share-deal-review нотариус! + corporate-meeting-prep)"
     },
@@ -46,6 +54,7 @@
       "path": "tax-law",
       "manifest": "tax-law/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 9,
       "note": "НК — 9 skills RU-unique (выбор системы налогообложения, НДС, ВНП-ответ killer skill, ст.138 досудебка, transfer pricing раздел V.1, FNS correspondence, АС-споры, cold-start, customize)"
     },
@@ -54,6 +63,7 @@
       "path": "public-procurement",
       "manifest": "public-procurement/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 9,
       "note": "ФЗ-44/223 — 9 skills RU-unique (tender documentation review killer skill + eligibility + tech/price proposals + bias detection + FAS жалоба + РНП check + cold-start + customize)"
     },
@@ -62,6 +72,7 @@
       "path": "compliance-aml",
       "manifest": "compliance-aml/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 9,
       "note": "115-ФЗ ПОД-ФТ — 9 skills RU-unique (ПВК + KYC + бенефициары + sanctions multi-jurisdictional + PEP + transaction monitoring + СПО/СОО в Росфинмониторинг + cold-start + customize)"
     },
@@ -70,6 +81,7 @@
       "path": "ip-law",
       "manifest": "ip-law/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 13,
       "note": "Часть 4 ГК + Роспатент/ФИПС/СИП — 13 skills (clearance + FTO + infringement-triage + cease-desist + ip-clause-review с ст.1295 служ.произведение + invention-intake + oss-review + portfolio + takedown с ФЗ-149 ст.15.7 + Мосгорсуд антипиратский + cold-start + customize + 2 RU-unique: rospatent-application + domain-dispute через АДРД КЦ)"
     },
@@ -78,6 +90,7 @@
       "path": "ai-governance",
       "manifest": "ai-governance/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 10,
       "note": "AI Governance с Указом 490/2019 + 152-ФЗ + sectoral overlays + post-2022 sanctions — 10 skills (use-case-triage + vendor-ai-review + aia-generation + ai-inventory + policy-starter + cold-start + customize + 3 RU-unique: deployment-review + training-data-review + user-disclosure-check)"
     },
@@ -86,6 +99,7 @@
       "path": "administrative-law",
       "manifest": "administrative-law/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 8,
       "note": "КоАП + 248-ФЗ — 8 skills RU-unique (koap-violation-response killer skill + inspection-preparation + inspection-defense + administrative-appeal 10 дн + statute-of-limitations-check ст.4.5 + fines-calculator + cold-start + customize)"
     },
@@ -94,6 +108,7 @@
       "path": "real-estate",
       "manifest": "real-estate/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 9,
       "note": "Недвижимость РФ — 9 skills RU-unique (ddu-review 214-ФЗ killer + lease-commercial + lease-residential + cadastre-check Росреестр/ЕГРН + encumbrance-analysis + purchase-sale-review + construction-contract-review СНиП/СРО + cold-start + customize)"
     },
@@ -102,6 +117,7 @@
       "path": "regulatory-monitor",
       "manifest": "regulatory-monitor/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 6,
       "note": "Мониторинг изменений НПА — 6 skills (reg-feed-watcher killer skill + policy-diff + gap-surfacer + policy-redraft + cold-start + customize). Через pravo MCP."
     },
@@ -110,11 +126,20 @@
       "path": "consumer-product",
       "manifest": "consumer-product/pack.yaml",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "skill_count": 5,
       "note": "ЗЗПП + 38-ФЗ реклама + 152-ФЗ для consumer products — 5 skills (launch-review killer skill + terms-review + return-policy-review RU-unique + cold-start + customize)."
     }
   ],
-  "roadmap_packs": [],
+  "roadmap_packs": [
+    {"id": "process-documents", "description": "Cross-cutting процесс.документы (иски, отзывы, апелляции, ходатайства)", "priority": "P0", "phase": 1},
+    {"id": "family-law", "description": "Семейное право (развод, алименты, раздел имущества)", "priority": "P0", "phase": 1},
+    {"id": "inheritance-law", "description": "Наследственное право", "priority": "P1", "phase": 1},
+    {"id": "personal-bankruptcy", "description": "Банкротство физлиц", "priority": "P1", "phase": 1},
+    {"id": "housing-law", "description": "Жилищное право (ЖКХ, УК, перепланировки, ДДУ)", "priority": "P1", "phase": 2},
+    {"id": "financial-disputes", "description": "ОСАГО/КАСКО, банки, МФО, АСВ", "priority": "P2", "phase": 2},
+    {"id": "social-benefits", "description": "Пенсии, маткапитал, льготы", "priority": "P2", "phase": 2}
+  ],
   "mcps": [
     {
       "id": "pravo",
@@ -123,6 +148,7 @@
       "command": ["python", "-m", "pravo_mcp.server"],
       "requires_auth": false,
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "used_by_packs": ["contract-law", "litigation", "labor-law", "data-protection", "tax-law", "corporate-law", "ip-law", "ai-governance", "administrative-law", "real-estate", "public-procurement", "compliance-aml"]
     },
     {
@@ -134,6 +160,7 @@
       "auth_env_var": "API_FNS_KEY",
       "auth_signup_url": "https://api-fns.ru",
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "used_by_packs": ["contract-law", "corporate-law", "litigation", "tax-law", "ip-law", "compliance-aml", "public-procurement"]
     },
     {
@@ -143,6 +170,7 @@
       "command": ["python", "-m", "kad_mcp.server"],
       "requires_auth": false,
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "limitations": "kad.arbitr.ru имеет anti-bot защиту; для production volumes рекомендуется paid feed (СПАРК / Контур / Casebook).",
       "used_by_packs": ["litigation", "corporate-law", "tax-law", "ip-law", "public-procurement"]
     },
@@ -153,6 +181,7 @@
       "command": ["python", "-m", "efrsb_mcp.server"],
       "requires_auth": false,
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "used_by_packs": ["corporate-law", "contract-law", "labor-law", "tax-law", "ip-law"]
     },
     {
@@ -162,6 +191,7 @@
       "command": ["python", "-m", "rospatent_mcp.server"],
       "requires_auth": false,
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "used_by_packs": ["ip-law", "corporate-law"]
     },
     {
@@ -171,6 +201,7 @@
       "command": ["python", "-m", "zakupki_mcp.server"],
       "requires_auth": false,
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "used_by_packs": ["public-procurement", "corporate-law"]
     },
     {
@@ -180,13 +211,21 @@
       "command": ["python", "-m", "rosreestr_mcp.server"],
       "requires_auth": false,
       "status": "mvp",
+      "health": "see MCP-STATUS.md",
       "limitations": "PKK даёт базовую инфо; для полных ЕГРН выписок — заказ через rosreestr.gov.ru (290-460 руб).",
       "used_by_packs": ["real-estate", "corporate-law"]
     }
   ],
   "roadmap_mcps": [
-    {"id": "rkn", "description": "Реестр операторов ПДн (152-ФЗ)", "priority": "P2"},
-    {"id": "fas", "description": "ФАС решения по жалобам (для public-procurement / sectoral antitrust)", "priority": "P2"},
-    {"id": "fssp", "description": "Банк данных исполнительных производств — ФССП", "priority": "P2"}
+    {"id": "cbr", "description": "ЦБ РФ SOAP API + 10 реестров (банки, лицензии, МФО, страховщики)", "priority": "P0", "status": "in-progress", "note": "Public SOAP, no auth — easy win"},
+    {"id": "sanctions", "description": "Росфинмониторинг + Минюст иноагенты — compliance bundle", "priority": "P0", "status": "planned", "note": "XML dumps, no auth"},
+    {"id": "fns-extended", "description": "ФНС opendata: дисквалификация, mass-addresses, реестр МСП", "priority": "P1", "status": "planned"},
+    {"id": "gas-pravosudie", "description": "СОЮ — sudrf.ru через scraping/paid feed (90% юр.практики)", "priority": "P1", "status": "research", "note": "Нет публичного API — нужно решение"},
+    {"id": "documents", "description": "Generator шаблонов исков, отзывов, ходатайств", "priority": "P1", "status": "planned"},
+    {"id": "constants", "description": "Constants registry (госпошлины, штрафы, МРОТ, сроки) — single source of truth", "priority": "P0", "status": "planned", "note": "См. references/constants/"},
+    {"id": "firm-knowledge", "description": "Self-hosted MCP для собственных данных юр.фирмы (Postgres+Qdrant)", "priority": "P1", "status": "planned"},
+    {"id": "rkn", "description": "Реестр операторов ПДн (152-ФЗ)", "priority": "P2", "status": "planned"},
+    {"id": "fas", "description": "ФАС решения по жалобам", "priority": "P2", "status": "planned"},
+    {"id": "fssp", "description": "Банк данных исполнительных производств — ФССП", "priority": "P2", "status": "planned"}
   ]
 }
